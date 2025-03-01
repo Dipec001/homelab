@@ -23,3 +23,13 @@
 - `uname -a` → Show system info
 - `df -h` → Check disk space usage
 - `free -m` → Check memory usage
+
+## 🔹 Package management 
+- `apt-get install <package-name>` → Installs the package whose name is specified
+- `apt-get remove <package-name>` → Removes the package whose name is specified if installed
+- `apt-cache search <package-name>*` → It searches for available packages in your system's APT package cache that match the
+ given name. The * wildcard allows for partial matches
+- `apt-cache search <package-name>`
+- `apt-cache policy <package-name>` → Shows the info(version etc) about the specified package
+
+
