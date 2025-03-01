@@ -10,6 +10,8 @@
 - `mkdir new_folder` → Create a new folder
 - `rm file.txt` → Delete a file
 - `rm -r folder` → Delete a folder and its contents
+- `nano <filename>` → Opens the file in read and write mode(if permissions allow)
+- `sudo` → (superuser do) Gives superuser commands to run commands that need administrative privileges
 
 ## 🔹 File Viewing
 - `cat file.txt` → View file content
