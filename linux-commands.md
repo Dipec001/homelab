@@ -108,7 +108,8 @@ Finds files with 644 permissions (owner can read/write, others can only read).
 
 {} → Represents each found file.
 
-\; → Marks the end of the -exec command.
+\; → Marks the end of the -exec command.This could also be `+` and as a matter of fact the latter is more efficient and it 
+groups the command and executes as one rather than executing seperatelt for each file.
 
 ### Find and Delete Files
 
@@ -130,4 +131,18 @@ Deletes all .log files in the current directory and subdirectories.
 `find . -type f -name "*php" -size +50k`
 
 - Finds file with name extension php and file size over 50kb
+
+## Search for Text Inside Files
+- `grep "search_term" file.txt` - Finds occurrences of `"search_term"` inside `file.txt`.
+- `grep -i "search_term" file.txt` - Case-insensitive search (`-i` ignores case).
+- `grep -n "search_term" file.txt` - Shows line numbers (`-n` displays line numbers where matches are found).
+- `grep -r "search_term" /path/to/dir` - Recursively searches inside all files in a directory.
+- `grep -l "search_term" *.txt` - Lists only file names containing the search term.
+- `grep -v "search_term" file.txt` - Shows lines **not** containing `"search_term"` (`-v` inverts the match).
+
+### **Combining Flags**
+You can combine flags for more advanced searches:
+```bash
+grep -i -n "error" logfile.txt
+```
 
