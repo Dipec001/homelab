@@ -146,3 +146,14 @@ You can combine flags for more advanced searches:
 grep -i -n "error" logfile.txt
 ```
 
+This will search for "error" inside logfile.txt, ignoring case and showing line numbers.
+## Process and service  management
+- `top` - to see all running processes in real time
+- `ps aux` - to see all running processes at the time the command is being run
+- `kill -9 <PID>` - to kill the process with the specified PID
+- `killall <name>` - kill all process with the name
+- `sudo systemctl start elasticsearch`  # Start the service
+- `sudo systemctl stop elasticsearch`   # Stop the service
+- `sudo systemctl status elasticsearch` # Check status
+
+
