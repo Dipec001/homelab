@@ -62,6 +62,72 @@ chmod g-w file.txt    # Remove write for group
 chmod o+r file.txt    # Add read for others
 
 ### 🔄 Changing Ownership
-chown user:group file.txt  # Change owner and group
+chown user:group file.txt  # Change d group
 sudo chown root:root script.sh  # Change owner to root
+
+## Find files/directories
+
+`find [path] [options] [expression]`
+
+`` → The directory to start searching from (e.g., . for the current directory).
+
+`` → Filters like file type, permissions, modification time, etc.
+
+`` → Defines what to look for (e.g., -name "*.php").
+
+Finding Files and Directories
+
+### Find Files with a Specific Extension
+
+`find . -type f -iname "*.php"`
+
+. → Searches from the current directory.
+
+-type f → Searches for files only (use -type d for directories).
+
+-iname "*.php" → Searches for files with a .php extension, case-insensitive (-name is case-sensitive).
+
+### Find Directories Matching a Pattern
+
+`find . -type d -iname "config*"`
+
+Finds directories that start with "config".
+
+
+### Find by Permissions
+
+`find . -type f -perm 644`
+
+Finds files with 644 permissions (owner can read/write, others can only read).
+
+### Find and Execute a Command
+
+`find . -type f -iname "*.php" -exec ls -lh {} \;`
+
+-exec → Runs a command on each result.
+
+{} → Represents each found file.
+
+\; → Marks the end of the -exec command.
+
+### Find and Delete Files
+
+`find . -type f -iname "*.log" -delete`
+
+Deletes all .log files in the current directory and subdirectories.
+
+### Find Files Modified Recently
+
+`find . -type f -mtime -7`
+
+- Finds files modified in the last 7 days.
+
+`find . -type f -mmin -30`
+
+- Finds files modified in the last 30 minutes.
+### Find files by size
+
+`find . -type f -name "*php" -size +50k`
+
+- Finds file with name extension php and file size over 50kb
 
