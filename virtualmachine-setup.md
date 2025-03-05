@@ -81,6 +81,9 @@ Run updates:
 `sudo systemctl enable ssh`
 `sudo systemctl start ssh`
 
+if you enable this, you can connect to it on your normal comouter using:
+`ssh username@ip` where username is your VM's username and ip is your vm's ip which you can get using the command `hostname -I`
+
 (Optional) Check system logs:
 
 `journalctl -xe`
