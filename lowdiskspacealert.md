@@ -83,6 +83,8 @@ Day of Week	*	Runs every day of the week
 
 4️⃣ Email Alert Example 📩
 ✅ Here’s the email I received when disk space was low:
+![lowdiskalert](https://github.com/user-attachments/assets/fbe0bd24-6840-428d-a53a-0a05c9f9662d)
+
 
 
 💡 I can check emails on my server using:
