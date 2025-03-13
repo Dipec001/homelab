@@ -82,3 +82,38 @@ cat -- -file07  # the -- makes the command know that the file name starting -f i
 ```
 - The password in this file is - 4oQYVPkxZOOEOO5pTW81FB8j8lxXGUQw
 
+## Level 5 -> Level 6
+**Goal:** Get the password from a file inside any of the subdirs in the inhere dir with these properties 
+- human-readable
+- 1033 bytes in size
+- not executable
+```bash
+find inhere -type f -size 1033c ! -executable 
+```
+The command above finds files only (-type f) inside the inhere (recursive by default so finds in subdirs) with size exactly 1033 bytes
+(c stands for bytes) and file which is not executable (! -executable)
+
+After finding the file 'inhere/maybehere07/.file2'
+
+I get the password from within using;
+```bash
+cat inhere/maybehere07/.file2
+```
+- The password from the file is - HWasnPhtq9AVKe0dmk45nxy20cvUa6EG
+
+## Level 6 -> Level 7
+**Goal:** Get the password from file inside the system(somewhere on the server) that matches these properties;
+- owned by user bandit7
+- owned by group bandit6
+- 33 bytes in size
+```bash
+find / -type f -size 33c -group bandit6 -user bandit7
+```
+You can optionally add '2>/dev/null' at the end of the command to hide permission errors 
+THe file is shown '/var/lib/dpkg/info/bandit7.password'
+
+I get the password from within using;
+```bash
+cat /var/lib/dpkg/info/bandit7.password
+```
+- The password from this file is - morbNTDkSW6jIlUc0ymOdMaLnOlFVAaj
