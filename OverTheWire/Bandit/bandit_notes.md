@@ -55,3 +55,30 @@ cat ...Hiding-From-You # to see the content of the file
 ```
 - The password in this file is - 2WmrDFRmJIq3IPxneAaMGhap0pFhF3NJ
 
+## Level 4 -> Level 5
+**Goal:** Get the password from the only human readable file in the dir inhere
+
+```bash
+file * # this will show the file type of all the files inthe inhere dir
+#+ for this particular case all the file names start with a - e.g '-file00'
+#+ so to open it we would use file */ or file -- *
+```
+- Files with the type ASCII text are humanly readable
+REsult of the file ./*
+./-file00: data
+./-file01: data
+./-file02: data
+./-file03: data
+./-file04: data
+./-file05: data
+./-file06: data
+./-file07: ASCII text
+./-file08: data
+./-file09: data
+
+To get the content of the file '-file07', i use;
+```bash
+cat -- -file07  # the -- makes the command know that the file name starting -f is not a flAG and should be treated as name
+```
+- The password in this file is - 4oQYVPkxZOOEOO5pTW81FB8j8lxXGUQw
+
