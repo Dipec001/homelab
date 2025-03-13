@@ -117,3 +117,36 @@ I get the password from within using;
 cat /var/lib/dpkg/info/bandit7.password
 ```
 - The password from this file is - morbNTDkSW6jIlUc0ymOdMaLnOlFVAaj
+
+## Level 7 -> Level 8
+**Goal: ** Get the password from data.txt file next to the word 'millionth'
+
+```bash
+grep "millionth" data.txt
+```
+
+The result of this command is 'millionth       dfwvzFQi4mU0wfNbFOe9RoWskMLg7eEc'
+
+- The password of from here is - dfwvzFQi4mU0wfNbFOe9RoWskMLg7eEc
+
+## Level 8 -> Level 9
+**Goal:** Get the password from the file. It is the only line of text that occurs only once
+```bash
+sort data.txt | uniq -u
+```
+We do sort before using the uniq command because it helps the uniq command work better by arranging all the lines to be consecutiv
+identical lines
+
+- THe password gotten from here is - 4CKMh1JI91bUIZZPXDqGanal4xvAg0JM
+
+## Level 9 -> Level 10
+**Goal:** To find the password for the next level which is stored in the file data.txt in one of the few human-readable ,
+, preceded by several ‘=’ characters.
+
+```bash
+strings data.txt | grep "="
+```
+The strings command reduces the file to only the lines which are humanly readable meanwhile the grep piping finds the lines which
+have == in it.
+
+- The password here  is - FGUW5ilLVJrxX9kMYMmlN4MgbpfMiqey
