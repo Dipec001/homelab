@@ -42,3 +42,16 @@ cat file\ with\ name\ space
 ```
 
 - The password in this file is - MNk8KNH3Usiio41PRUEoDFPqfxLPlSmx
+## Level 3 -> Level 4
+** Goal:** Get the password from a hidden file inside a dir called inhere
+
+```bash
+ls -a inhere # to see the content of the inhere dir with the hidden file
+```
+The name of the hidden file is '...Hiding-From-You'
+
+```bash
+cat ...Hiding-From-You # to see the content of the file
+```
+- The password in this file is - 2WmrDFRmJIq3IPxneAaMGhap0pFhF3NJ
+
