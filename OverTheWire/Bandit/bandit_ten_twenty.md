@@ -80,6 +80,31 @@ ASCII text ->	cat data (✅ This means you've reached the password!)
 - The password gotten here is *FO5dwFsc0cbaIiH0h8J2eUks2vdTDwAn*
 
 ## Level 13 -> Level 14
-**Goal:** 
+**Goal:** The password for the next level is stored in /etc/bandit_pass/bandit14 and can only be read by user bandit14. For this
+ level, you don’t get the next password, but you get a private SSH key that can be used to log into the next level. Note:
+ localhost is a hostname that refers to the machine you are working on
 
+```bash
+ssh -i sshkey.private -p 2220 bandit14@localhost
+```
+This is the command i am using to log in to Level 14 as user bandit14. The usual command to log in to ssh is 
+```ssh username@hostname
+```
+And log in with the password but here we use the private key(sshkey.private) to login so we use the flag *-i* AND Overthewire
+(bandit) uses port 2220 and not the default 22 so we use the *-p* to specify the port 2220 then the username as *bandit* and the
+hostname *localhost*
+So now that we are logged in as bandit14 user, we have permission to read the file and get the password from file bandit14
+
+- The password for this level is *MU4VWeTyJk8ROof1qqmcBPaLh7lDCPvS*
+
+## Level 14 -> Level 15
+**Goal:** The password for the next level can be retrieved by submitting the password of the current level to port 30000 on
+ localhost.
+
+```bash
+telnet localhost 30000
+```
+Then submit the code gotten from the previous step *MU4VWeTyJk8ROof1qqmcBPaLh7lDCPvS* and click enter
+
+- the password gotten here is 8xCjnmgoKbGLhHFAZlGE5Tmu4M2tKJQo
 
