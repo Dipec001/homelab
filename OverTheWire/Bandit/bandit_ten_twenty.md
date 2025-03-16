@@ -108,3 +108,15 @@ Then submit the code gotten from the previous step *MU4VWeTyJk8ROof1qqmcBPaLh7lD
 
 - the password gotten here is 8xCjnmgoKbGLhHFAZlGE5Tmu4M2tKJQo
 
+## Level 15 -> level 16
+**Goal:** The password for the next level can be retrieved by submitting the password of the current level to port 30001 on
+ localhost using SSL/TLS encryption.
+
+```bash
+openssl s_client -connect localhost:30001
+```
+After the prompt, i enter the password gotten from the previous level 8xCjnmgoKbGLhHFAZlGE5Tmu4M2tKJQo and click enter
+
+- The password gotten here is kSkvUpMQ7lBYyCM4GBPvCvT1BfWRy0Dx
+
+
