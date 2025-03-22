@@ -1,4 +1,6 @@
 
+# Log the execution to a file
+echo "Auto-commit ran at $(date)" >> /home/dipec/cron-log.txt
 
 #!/bin/bash  
 if [ -n "$(git status --porcelain)" ]; then  
