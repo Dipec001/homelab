@@ -33,14 +33,14 @@ jobs:
 
       - name: Install dependencies (if any)
         run: |
-          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+          if [ -f requirements.txt ]; then pip install -r my-python-project/requirements.txt; fi
       # Checks for `requirements.txt` and installs dependencies only if it exists
         shell: bash
         if: runner.os == 'Linux' || runner.os == 'macOS'
 
       - name: Install dependencies (if any, Windows)
         run: |
-          if (Test-Path "requirements.txt") { pip install -r requirements.txt }
+          if (Test-Path "requirements.txt") { pip install -r my-python-project/requirements.txt }
         shell: powershell
         if: runner.os == 'Windows'
 
@@ -68,13 +68,13 @@ jobs:
 
       - name: Install dependencies (if any)
         run: |
-          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+          if [ -f requirements.txt ]; then pip install -r my-python-project/requirements.txt; fi
         shell: bash
         if: runner.os == 'Linux' || runner.os == 'macOS'
 
       - name: Install dependencies (if any, Windows)
         run: |
-          if (Test-Path "requirements.txt") { pip install -r requirements.txt }
+          if (Test-Path "requirements.txt") { pip install -r my-python-project/requirements.txt }
         shell: powershell
         if: runner.os == 'Windows'
 
