@@ -35,6 +35,14 @@ jobs:
         run: |
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
       # Checks for `requirements.txt` and installs dependencies only if it exists
+        shell: bash
+        if: runner.os == 'Linux' || runner.os == 'macOS'
+
+      - name: Install dependencies (if any, Windows)
+        run: |
+          if (Test-Path "requirements.txt") { pip install -r requirements.txt }
+        shell: powershell
+        if: runner.os == 'Windows'
           
   # Second job: Test (depends on 'build' job)
   test:
