@@ -77,7 +77,7 @@ jobs:
 
       - name: Run tests with pytest
         run: |
-          pytest --verbose || echo "No tests found. Skipping..."
+          pytest my-python-project/tests || echo "No tests found. Skipping..."
         shell: bash
         if: runner.os != 'Windows'
 
