@@ -66,6 +66,14 @@ jobs:
       - name: Install dependencies (if any)
         run: |
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+        shell: bash
+        if: runner.os == 'Linux' || runner.os == 'macOS'
+
+      - name: Install dependencies (if any, Windows)
+        run: |
+          if (Test-Path "requirements.txt") { pip install -r requirements.txt }
+        shell: powershell
+        if: runner.os == 'Windows'
 
       - name: Run tests with pytest
         run: |
