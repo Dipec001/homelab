@@ -86,6 +86,6 @@ jobs:
 
       - name: Run tests with pytest (Windows)
         run: |
-          if (Test-Path ".\tests\") { pytest } else { Write-Host "No tests found. Skipping..." }
+          if (Test-Path ".\mypythonproject\tests\") { pytest } else { Write-Host "No tests found. Skipping..." }
         shell: powershell
         if: runner.os == 'Windows'
