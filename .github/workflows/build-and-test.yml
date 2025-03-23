@@ -79,7 +79,7 @@ jobs:
         if: runner.os == 'Windows'
 
       - name: Set PYTHONPATH
-        run: echo "PYTHONPATH=$PYTHONPATH:${{ github.workspace }}/my-python-project" >> $GITHUB_ENV
+        run: echo "PYTHONPATH=$PYTHONPATH:/home/runner/work/homelab/homelab" >> $GITHUB_ENV
 
       - name: Run tests with pytest
         run: |
