@@ -78,8 +78,13 @@ jobs:
         shell: powershell
         if: runner.os == 'Windows'
 
-      - name: Set PYTHONPATH
-        run: echo "PYTHONPATH=$PYTHONPATH:/home/runner/work/homelab/homelab" >> $GITHUB_ENV
+      - name: Set PYTHONPATH on Linux or Windows
+        run: |
+          if [ $RUNNER_OS == 'Windows' ]; then
+            echo "PYTHONPATH=$Env:PYTHONPATH;/home/runner/work/homelab/homelab" >> $GITHUB_ENV
+          else
+            echo "PYTHONPATH=$PYTHONPATH:/home/runner/work/homelab/homelab" >> $GITHUB_ENV
+          fi
 
       - name: Run tests with pytest
         run: |
