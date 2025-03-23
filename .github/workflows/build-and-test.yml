@@ -43,6 +43,9 @@ jobs:
           if (Test-Path "requirements.txt") { pip install -r requirements.txt }
         shell: powershell
         if: runner.os == 'Windows'
+
+      - name: List installed Python packages (debugging)
+        run: pip list
           
   # Second job: Test (depends on 'build' job)
   test:
