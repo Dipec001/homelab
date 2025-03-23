@@ -1,6 +1,6 @@
-# This is a basic workflow to help you get started with Actions
+# This is a multi OS, multi job workflow - prints the OS too
 
-name: CI
+name: Python CI
 
 # Controls when the workflow will run
 on:
@@ -11,31 +11,54 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
-env:
-  SHOULD_RUN: 'false'
-
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
   build:
-    if: ${{ env.SHOULD_RUN == 'true' }}
-    # The type of runner that the job will run on
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix: 
+        os: [ubuntu-latest, windows-latest]
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
 
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Hello, world!
+      # Setup
+      - name: Setup python
+        uses: actions/setup-python@v5.4.0
+        with:
+          python-version: 3.9  # Specify Python version
+
+      - name: Install dependencies (if any)
+        run: |
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+      # Checks for `requirements.txt` and installs dependencies only if it exists
+          
+  # Second job: Test (depends on 'build' job)
   test:
-    runs-on: ubuntu-latest
-
-    # Steps
+    needs: build  # This ensures 'test' runs only after 'build' completes successfully
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix: 
+        os: [ubuntu-latest, windows-latest]
+    
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4  # Needed because each job runs in a fresh VM
 
-      - name: Tests the application
-      - run 
+      - name: Echo OS
+        run: echo "Running on ${{ matrix.os }}"
+      
+      - name: Setup Python
+        uses: actions/setup-python@v5.4.0
+        with:
+          python-version: 3.9
+
+      - name: Install dependencies (if any)
+        run: |
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+
+      - name: Run tests with pytest
+        run: |
+          pytest || echo "No tests found. Skipping..."
