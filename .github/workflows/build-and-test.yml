@@ -80,11 +80,12 @@ jobs:
 
       - name: Set PYTHONPATH on Linux or Windows
         run: |
-          if [ $RUNNER_OS == 'Windows' ]; then
-            echo "PYTHONPATH=$Env:PYTHONPATH;/home/runner/work/homelab/homelab" >> $GITHUB_ENV
-          else
-            echo "PYTHONPATH=$PYTHONPATH:/home/runner/work/homelab/homelab" >> $GITHUB_ENV
-          fi
+          if ($Env:RUNNER_OS -eq 'Windows') {
+              echo "PYTHONPATH=$Env:PYTHONPATH;/home/runner/work/homelab/homelab" >> $GITHUB_ENV
+          } else {
+              echo "PYTHONPATH=$PYTHONPATH:/home/runner/work/homelab/homelab" >> $GITHUB_ENV
+          }
+
 
       - name: Run tests with pytest
         run: |
