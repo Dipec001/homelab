@@ -50,5 +50,5 @@ the following;
 - Copy only the files we need and not the entire source
 - Use non root user
 - ONly install prod dependencies
-- Avoid leaking secrets
+- Avoid leaking secrets: Use the mounting to mount secrets `docker --mount=type=secret,id=secret.txt,dst=/"
 - Leverage multi stage builds where it makes sense 
